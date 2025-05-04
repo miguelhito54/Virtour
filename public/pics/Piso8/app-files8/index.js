@@ -16,6 +16,11 @@
 'use strict';
 
 (function() {
+  if (typeof window === 'undefined') {
+    console.error('This script must be run in a browser environment.');
+    return;
+  }
+
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
@@ -189,6 +194,15 @@
     startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
+  }
+
+  function switchToScene(sceneId) {
+    const scene = findSceneById(sceneId);
+    if (scene) {
+      switchScene(scene);
+    } else {
+      console.error(`Scene with ID '${sceneId}' not found.`);
+    }
   }
 
   function updateSceneName(scene) {
