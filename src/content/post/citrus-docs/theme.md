@@ -1,6 +1,6 @@
 ---
-title: Sebastian Marin
-description: Ingeniero de Software
+title: Theme
+description: theme
 publishDate: 03 Feb 2025
 seriesId: citrus-docs
 orderInSeries: 3
