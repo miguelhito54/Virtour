@@ -1,0 +1,61 @@
+# 01-05-2025
+
+Para este dia se crearon y unieron dos pisos, el piso 1 y el piso 3, para lograr la union de estos dos pisos se tuvieron varias modificaciones que se comentaran a continuacion
+
+## CREACION
+
+Lo primero que se hizo fue crear una nueva carpeta (Virtour-U) en la cual se uniran todos los proyectos de marzipano hasta completarlo al 100%.
+todo el proyecto ira dentro de la carpeta app-files
+
+se copiaron y pegaron las carpetas img y vendor de cualquier otro proyecto que nos exportara Marzipano, luego se creo la carpeta tiles, en donde se pegaron y se pegaran todas las fotos que se requieran para el correcto funcionamiento del recorrido virtual
+
+## UNION DE LOS PISOS (MODIFICACION DEL DATA.JS)
+
+Para unir los pisos se debe modificar el archivo que se encuentra en data.js, en este archivo se encuentran las referencias y las configuraciones para la creacion de las fotos, al igual que los linkhotspots y los infohotspots, tambien se encuentra las configuraciones basicas del recorrido al final del codigo.
+
+Para unir los diferentes pisos solo hay que copiar los datos que se encuentran en data.js en cada proyecto de Marzipano y pegarlos en este data.js, hay que asegurarse que el id de cada escena no sea igual a otra, de lo contrario habra errores
+
+## MODIFICACION AL INDEX.HTML
+
+a este archivo se le hicieron ciertas modificaciones:
+
+- Se le modifico la lista que desplega un menu con links directos a las fotos 360: <div id="sceneList">
+  <ul class="scenes">
+
+  </ul>
+</div>
+
+dentro de las etiquetas <ul> venia un codigo erroneo por defecto, se le cambio por el siguiente para su correcto funcionamiento
+
+<ul class="scenes">
+    <li class="scene" data-id="0-afueras">
+      <a href="javascript:void(0)" class="text">Afueras</a>
+    </li>
+    <li class="scene" data-id="1-parqueadero">
+      <a href="javascript:void(0)" class="text">Parqueadero</a>
+    </li>
+  </ul>
+
+  este codigo va dentro de la lista, pero para este proyecto no es deseable que se despliegue el menu que tiene los links directos de las fotos 360
+
+
+## MODIFICACION AL INDEX.JS
+
+A la hora correr el proyecto se generaba un error a causa de modificar el index.html, este error era que no inicializaba el recorrido virtual y se quedaba en una pantalla en negro, para inicializar el recorrido tocaba presionar uno de los botones que desplegaba el menu de links directos que anteriormente eliminamos a la hora de modificar el index.html
+
+Para resolver este problema se modifico la funcion que le indicaba al proyecto inicializarse en una escena en especifico
+
+  // Set handler for scene switch.
+  scenes.forEach(function(scene) {
+    var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
+    if (el) {
+      el.addEventListener('click', function() {
+        switchScene(scene);
+        if (document.body.classList.contains('mobile')) {
+          hideSceneList();
+        }
+      });
+    }
+  });
+  
+esta funcion se encuentra en la linea 149, en la cual se crea una variable para la inicializacion, pero al no encontrar la lista del recorrido en el index.html la funcion encontraba la variable como null, teniendo como resultado el error de la pantalla nergra, lo que se le añadio fue el condicional que contiene la variable "el"
