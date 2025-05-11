@@ -5,39 +5,53 @@ import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 import Virtour from "@/components/tour/Virtour.astro";
 import MenuPanel from "@/components/tour/MenuPanel.astro";
-const MAX_POSTS = 10;
+/*const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = allPosts
   .sort(collectionDateSort)
   .slice(0, MAX_POSTS) as CollectionEntry<"post">[];
 const MAX_NOTES = 2;
 const allNotes = await getCollection("note");
-const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
+const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);*/
 ---
-<MenuPanel />
+<!--MenuPanel /-->
 <PageLayout meta={{ title: "Home" }}>
-  <div
-    class="absolute top-0 left-1/2 md:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden"
-  >
-    <div
-      class="absolute top-[10%] right-[-40%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-10"
-    >
-    </div>
-    <div
-      class="absolute top-[10%] left-[-40%] w-[65%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-30 dark:opacity-10"
-    >
-    </div>
-    <div
-      class="absolute top-[-20%] left-[-50%] w-[85%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-60 dark:opacity-10"
-    >
-    </div>
-    <div
-      class="absolute top-[-20%] right-[-50%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-10"
-    >
-    </div>
-  </div>
-  <div class="relative flex flex-col lg:flex-row">
-    <Virtour />
-    <div class="flex-1 hidden lg:block"></div>
-  </div>
+  <main class="container">
+    <!-- Contenedor del recorrido -->
+    <section class="recorrido">
+      <Virtour />
+    </section>
+  
+    <!-- Lista lateral -->
+    <aside class="espacio-recorrido">
+      <div>
+        <h2>Recorridos</h2>
+          <ol class="recorridos">
+            <li><a href="#" onclick="cambiarEscena('0-afueras')">Afuera</a></li>
+            <li><a href="#" onclick="cambiarEscena('3-ascensor_p1')">Piso 1</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascesor3')">Piso 3</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor4')">Piso 4</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor5')">Piso 5</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor6')">Piso 6</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor7')">Piso 7</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor8')">Piso 8</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor9')">Piso 9</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor10')">Piso 10</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor11')">Piso 11</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor12')">Piso 12</a></li>
+            <li><a href="#" onclick="cambiarEscena('0-ascensor13')">Piso 13</a></li>
+          </ol>
+          <script is:inline>
+            window.cambiarEscena = function(sceneId) {
+              const iframe = document.getElementById('virtour-iframe');
+              if (iframe && iframe.contentWindow) {
+              iframe.contentWindow.postMessage({ tipo: 'cambiarEscena', escena: sceneId }, '*');
+              } else {
+              console.error("No se encontró el iframe o su ventana.");
+              }
+            }
+            </script>
+      </div>
+    </aside>
+  </main>
 </PageLayout>

@@ -172,7 +172,7 @@ var APP_DATA = {
     },
     {
       "id": "3-ascensor_p1",
-      "name": "Ascensor_P1",
+      "name": "Ascensor1",
       "levels": [
         {
           "tileSize": 256,
@@ -3794,7 +3794,7 @@ var APP_DATA = {
   "name": "Virtour-U",
   "settings": {
     "mouseViewMode": "drag",
-    "autorotateEnabled": true,
+    "autorotateEnabled": false,
     "fullscreenButton": false,
     "viewControlButtons": false
   }

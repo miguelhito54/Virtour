@@ -392,23 +392,27 @@
   // Display the initial scene.
   switchScene(sceneinitial);
 
-})();
-
-
-/* codigo que funciona 
-
-// Set handler for scene switch.
-  scenes.forEach(function(scene) {
-    var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-    el.addEventListener('click', function() {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains('mobile')) {
-        hideSceneList();
+  //
+  function getSceneIdFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get("scene");
+  }
+  
+  // Display the scene based on URL, or default to first scene
+  var initialSceneId = getSceneIdFromUrl();
+  var initialScene = initialSceneId ? findSceneById(initialSceneId) : scenes[0];
+  switchScene(initialScene);
+  
+  // Escuchar mensajes desde el iframe padre
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.tipo === 'cambiarEscena') {
+      var targetScene = findSceneById(event.data.escena);
+      if (targetScene) {
+        switchScene(targetScene);
+      } else {
+        console.warn("Escena no encontrada: " + event.data.escena);
       }
-    });
+    }
   });
-
-  este codigo inicia en la linea 148
-
-*/
+  
+})();
