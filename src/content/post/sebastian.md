@@ -1,42 +1,38 @@
----
-title: "Sebastian Marin"
-description: "Ingeniero de Software"
+---  
+title: "Sebastian Marin"  
+description: "Ingeniero de Software y Mentor Tecnológico"  
 publishDate: "05 Mar 2025"  
-tags: ["sebastian", "developer"]  
-draft: true
+draft: false
+imagePath: "/images/sebas.jpeg"  
 ---
 
-## How to create `.local.gitignore` that is not synchronized with Git?
+## Sobre mí
 
-1. **Create the `.local.gitignore` file**  
-   ```bash
-   touch .local.gitignore
-   ```
+¡Hola! Soy Sebastián Marín, un Ingeniero de Software con más de 8 años de experiencia en el desarrollo de aplicaciones web y soluciones en la nube. Me especializo en crear aplicaciones escalables utilizando tecnologías modernas y en implementar prácticas de DevOps para optimizar procesos de desarrollo.
 
-2. **Add it to `.git/info/exclude`** (so Git applies it locally)  
-   ```bash
-   echo ".local.gitignore" >> .git/info/exclude
-   ```
+Además, disfruto compartir conocimientos, contribuyendo a proyectos de código abierto y guiando a desarrolladores junior en su crecimiento profesional.
 
-3. **Configure Git to treat `.local.gitignore` as `.gitignore`**  
-   ```bash
-   git config --local core.excludesfile .local.gitignore
-   ```
+## Habilidades principales
 
-Now **`.local.gitignore` will work like a regular `.gitignore`, but only for you**.  
+- **Lenguajes:** JavaScript, TypeScript, Python  
+- **Frameworks:** React, Angular, Node.js  
+- **Bases de datos:** MySQL, MongoDB, DynamoDB  
+- **Otros:** AWS, Docker, Kubernetes  
 
-## How does it work?
-- `.local.gitignore` is not added to the repository.  
-- It is applied **only locally** on your computer.  
-- It works **like `.gitignore`**, but other developers don't have it.  
-- Git **does not see this file** thanks to `.git/info/exclude`.  
+## Proyectos destacados
 
-**Now you can add local files to it**:  
-```bash
-echo "my-secret-file.txt" >> .local.gitignore
-echo "debug_logs/" >> .local.gitignore
-```
+1. **Virtour:**  
+   Una plataforma interactiva para realizar recorridos virtuales en línea.  
+   - **Tecnologías:** Astro, TailwindCSS, Firebase  
+   - **Rol:** Arquitecto de software  
 
-:::caution
-Before performing a commit rollback, you must manually backup the files listed in `.local.gitignore`. This is because files ignored by `.local.gitignore` are not tracked by Git and will be lost if you rollback the commit. Git will not restore these files as they were not committed or staged.
-:::
+2. **DevMentor:**  
+   Una plataforma para conectar mentores con desarrolladores en crecimiento.  
+   - **Tecnologías:** React, Node.js, PostgreSQL  
+   - **Rol:** Desarrollador principal  
+
+## Contacto
+
+- **Correo:** sebastian.marin@example.com  
+- **GitHub:** [github.com/sebastianmarin](https://github.com/sebastianmarin)  
+- **LinkedIn:** [linkedin.com/in/sebastianmarin](https://linkedin.com/in/sebastianmarin)
