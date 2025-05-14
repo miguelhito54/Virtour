@@ -77,7 +77,7 @@
 
 @layer base {
 	:root,
-:root[data-theme="light"] {
+	:root[data-theme="light"] {
     color-scheme: light;
 
     /* Main Background */
@@ -323,4 +323,31 @@
 	article mark {
 		@apply bg-transparent;
 	}
+}
+.container {
+	display: flex;
+	gap: 2%;
+	flex-wrap: wrap;
+	align-content: start;
+}
+.recorrido {
+	flex-grow: 1;
+  	height: 75%;
+	background: #f0f0f0;
+}
+.espacio-recorrido {
+	width: 10%;
+  	height: 75%;
+  }
+.espacio-recorrido a {
+	padding-top: 30%;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;    /* horizontal */
+	justify-content: center; /* vertical */
+	text-align: center;
+}
+.espacio-recorrido a:hover {
+	text-decoration: underline;
 }
