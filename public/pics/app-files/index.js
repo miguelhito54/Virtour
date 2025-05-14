@@ -107,19 +107,6 @@
     };
   });
 
-  // Set up autorotate, if enabled.
-  var autorotate = Marzipano.autorotate({
-    yawSpeed: 0.03,
-    targetPitch: 0,
-    targetFov: Math.PI/2
-  });
-  if (data.settings.autorotateEnabled) {
-    autorotateToggleElement.classList.add('enabled');
-  }
-
-  // Set handler for autorotate toggle.
-  autorotateToggleElement.addEventListener('click', toggleAutorotate);
-
   // Set up fullscreen mode, if supported.
   if (screenfull.enabled && data.settings.fullscreenButton) {
     document.body.classList.add('fullscreen-enabled');
@@ -157,7 +144,6 @@
       });
     }
   });
-  
 
   // DOM elements for view controls.
   var viewUpElement = document.querySelector('#viewUp');
@@ -188,9 +174,9 @@
     stopAutorotate();
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
-    startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
+    window.parent.location.hash = scene.data.id; // Update the parent window's URL hash
   }
 
   function updateSceneName(scene) {
@@ -223,12 +209,9 @@
     sceneListToggleElement.classList.toggle('enabled');
   }
 
+  // Disable autorotate by overriding the settings
   function startAutorotate() {
-    if (!autorotateToggleElement.classList.contains('enabled')) {
-      return;
-    }
-    viewer.startMovement(autorotate);
-    viewer.setIdleMovement(3000, autorotate);
+    // Do nothing to ensure autorotate is always off
   }
 
   function stopAutorotate() {
@@ -237,14 +220,13 @@
   }
 
   function toggleAutorotate() {
-    if (autorotateToggleElement.classList.contains('enabled')) {
-      autorotateToggleElement.classList.remove('enabled');
-      stopAutorotate();
-    } else {
-      autorotateToggleElement.classList.add('enabled');
-      startAutorotate();
-    }
+    // Ensure autorotate toggle does nothing
+    autorotateToggleElement.classList.remove('enabled');
+    stopAutorotate();
   }
+
+  // Ensure autorotate is stopped on initialization
+  stopAutorotate();
 
   function createLinkHotspotElement(hotspot) {
 
@@ -388,27 +370,22 @@
     return null;
   }
 
-  var sceneinitial = findSceneById("0-afueras");
-  // Display the initial scene.
-  switchScene(sceneinitial);
+  // Function to load a scene based on the URL hash from the parent window
+  function loadSceneFromParentHash() {
+    const hash = window.parent.location.hash.substring(1); // Remove the '#' character
+    const scene = findSceneById(hash);
+    if (scene) {
+      switchScene(scene);
+    } else if (scenes.length > 0) {
+      // Default to the first scene if no valid hash is found
+      switchScene(scenes[0]);
+    }
+  }
+
+  // Listen for hash changes in the parent window to load the appropriate scene
+  window.addEventListener('hashchange', loadSceneFromParentHash);
+
+  // Load the initial scene based on the parent window's URL hash
+  loadSceneFromParentHash();
 
 })();
-
-
-/* codigo que funciona 
-
-// Set handler for scene switch.
-  scenes.forEach(function(scene) {
-    var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-    el.addEventListener('click', function() {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains('mobile')) {
-        hideSceneList();
-      }
-    });
-  });
-
-  este codigo inicia en la linea 148
-
-*/

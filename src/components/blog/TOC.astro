@@ -1,42 +1,50 @@
 ---
-import { generateToc } from "@/utils/generateToc";
+import TOCHeading from "@/components/blog/TOCHeading.astro";
 import type { MarkdownHeading } from "astro";
-import TOCHeading from "./TOCHeading.astro";
-import { Icon } from "astro-icon/components";
 
 interface Props {
-	headings: MarkdownHeading[];
+  headings: MarkdownHeading[];
+  author: string; // Replace imagePath with author
 }
 
-const { headings } = Astro.props;
+const { headings: rawHeadings, author } = Astro.props;
 
-const toc = generateToc(headings);
+// Debug log to verify the author value
+console.log("Author passed to TOC:", author);
+
+// Map author to their respective image
+const authorImages = {
+  "Cristian Barrientos": "/images/cris.jpeg",
+  "Sebastian Marin": "/images/sebas.jpeg",
+  "Miguel Angel": "/images/migue.jpg",
+};
+
+const imagePath = author in authorImages ? authorImages[author as keyof typeof authorImages] : "/images/default.jpg";
+
+// Transform rawHeadings into TocItem format
+const headings = rawHeadings.map((heading) => ({
+  ...heading,
+  children: [], // Add an empty children array to conform to TocItem type
+}));
 ---
 
-<div class="sticky top-20 rounded-t-lg">
-	<div class="sticky top-20 bg-bgColor rounded-t-lg">
-		<div class="sticky top-20 flex pt-4 ps-8 pb-2 items-end title rounded-t-lg bg-color-75 pe-4 gap-x-1 border-t border-l border-r border-special-light">
-			<!--
-			<Icon aria-hidden="true" class="flex-shrink-0 h-8 w-6 py-1" focusable="false" name="solar:clipboard-list-line-duotone" />
-			-->
-			<h4 class="title">Table of Contents</h4>
-			<button
-				id="close-toc"
-				class="absolute top-4 right-4 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
-				aria-label="Close TOC"
-			>
-				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:cancel-01" />
-			</button>
-			
-		</div>
-	</div>
-	<div class="bg-bgColor rounded-b-lg">
-		<div class="rounded-b-lg pb-6 bg-color-75 border-b border-l border-r border-special-light">
-			<div class="max-h-[calc(100vh-11rem)] h-auto overflow-y-auto overflow-hidden px-8">
-				<ul class="text-sm font-medium text-textColor">
-					{toc.map((heading) => <TOCHeading heading={heading} />)}
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="hidden md:block w-full max-w-[300px]">
+  <div class="bg-bgColor rounded-b-lg">
+    <div
+      class="rounded pb-6 bg-color-75 border-b border-l border-r border-t border-special-light"
+    >
+      <div class="flex justify-center items-center px-8 py-6">
+        <img
+          src={imagePath}
+          alt={`${author}'s Image`}
+          class="rounded-full w-32 h-32 object-cover"
+        />
+      </div>
+    </div>
+  </div>
+  <ul>
+    {headings.map((heading) => (
+      <TOCHeading heading={heading} />
+    ))}
+  </ul>
 </div>

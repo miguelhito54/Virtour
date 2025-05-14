@@ -30,10 +30,6 @@ export const menuLinks: { path: string; title: string }[] = [
 		title: "Home",
 	},
 	{
-		path: "https://ucc.edu.co/",
-		title: "Ir a la universidad",
-	},
-	{
 		path: "/posts/",
 		title: "Quienes somos",
 	},
