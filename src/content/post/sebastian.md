@@ -1,6 +1,6 @@
 ---  
 title: "Sebastian Marin"  
-description: "Ingeniero de Software y Mentor Tecnológico"  
+description: "Ingeniero de Software"  
 publishDate: "05 Mar 2025"  
 draft: false
 imagePath: "/images/sebas.jpeg"  
@@ -8,7 +8,7 @@ imagePath: "/images/sebas.jpeg"
 
 ## Sobre mí
 
-¡Hola! Soy Sebastián Marín, un Ingeniero de Software con más de 8 años de experiencia en el desarrollo de aplicaciones web y soluciones en la nube. Me especializo en crear aplicaciones escalables utilizando tecnologías modernas y en implementar prácticas de DevOps para optimizar procesos de desarrollo.
+¡Hola! Soy Sebastián Marín, un Ingeniero de Software con más de 2 años de experiencia en el desarrollo de aplicaciones web. Me especializo en crear aplicaciones escalables utilizando tecnologías modernas y en implementar prácticas de DevOps para optimizar procesos de desarrollo.
 
 Además, disfruto compartir conocimientos, contribuyendo a proyectos de código abierto y guiando a desarrolladores junior en su crecimiento profesional.
 
@@ -30,9 +30,9 @@ Además, disfruto compartir conocimientos, contribuyendo a proyectos de código 
    Una plataforma para conectar mentores con desarrolladores en crecimiento.  
    - **Tecnologías:** React, Node.js, PostgreSQL  
    - **Rol:** Desarrollador principal  
-
+link
 ## Contacto
 
-- **Correo:** sebastian.marin@example.com  
-- **GitHub:** [github.com/sebastianmarin](https://github.com/sebastianmarin)  
-- **LinkedIn:** [linkedin.com/in/sebastianmarin](https://linkedin.com/in/sebastianmarin)
+- **Correo:** sebastian.marin@campusucc.edu.co
+- **GitHub:** [github.com/sebastianmarin](https://github.com/sebastian-01)  
+- **LinkedIn:** [linkedin.com/in/sebastianmarin](www.linkedin.com/in/sebastian-marin-42808318b

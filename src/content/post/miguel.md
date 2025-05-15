@@ -1,6 +1,6 @@
 ---
 title: "Miguel Angel"
-description: "Desarrollador Full Stack y entusiasta de la tecnología"
+description: "Desarrollador Full Stack"
 publishDate: "05 Mar 2025"  
 draft: false
 imagePath: "/images/migue.jpg"
@@ -33,6 +33,6 @@ Cuando no estoy programando, me encanta explorar nuevas herramientas tecnológic
 
 ## Contacto
 
-- **Correo:** miguel.angel@example.com  
-- **GitHub:** [github.com/miguelangel](https://github.com/miguelangel)  
-- **LinkedIn:** [linkedin.com/in/miguelangel](https://linkedin.com/in/miguelangel)
+- **Correo:** miguel.garciar@campusucc.edu.co  
+- **GitHub:** [github.com/miguelangel](https://github.com/miguelhito54)  
+- **LinkedIn:** [linkedin.com/in/miguelangel](https://www.linkedin.com/in/miguel-%C3%A1ngel-garc%C3%ADa-6a983419a/)
