@@ -107,6 +107,9 @@
     };
   });
 
+  // Debug: log all available scene IDs
+  console.log("[Virtour] Available scene IDs:", scenes.map(s => s.data.id));
+
   // Set up fullscreen mode, if supported.
   if (screenfull.enabled && data.settings.fullscreenButton) {
     document.body.classList.add('fullscreen-enabled');
@@ -180,7 +183,9 @@
   }
 
   function updateSceneName(scene) {
-    sceneNameElement.innerHTML = sanitize(scene.data.name);
+    if (sceneNameElement) {
+      sceneNameElement.innerHTML = sanitize(scene.data.name);
+    }
   }
 
   function updateSceneList(scene) {
@@ -370,9 +375,12 @@
     return null;
   }
 
-  // Function to load a scene based on the URL hash from the parent window
-  function loadSceneFromParentHash() {
-    const hash = window.parent.location.hash.substring(1); // Remove the '#' character
+  // Function to load a scene based on the URL hash (always use iframe's own hash)
+  function loadSceneFromHash() {
+    let hash = window.location.hash.substring(1); // Use iframe's hash only
+    // Debug log
+    console.log("[Virtour] Loading scene for hash:", hash);
+
     const scene = findSceneById(hash);
     if (scene) {
       switchScene(scene);
@@ -382,10 +390,10 @@
     }
   }
 
-  // Listen for hash changes in the parent window to load the appropriate scene
-  window.addEventListener('hashchange', loadSceneFromParentHash);
+  // Listen for hash changes in the iframe window
+  window.addEventListener('hashchange', loadSceneFromHash);
 
-  // Load the initial scene based on the parent window's URL hash
-  loadSceneFromParentHash();
+  // Load the initial scene based on the iframe's URL hash
+  setTimeout(loadSceneFromHash, 0);
 
 })();
