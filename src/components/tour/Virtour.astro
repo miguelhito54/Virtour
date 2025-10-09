@@ -107,31 +107,36 @@ import VirtourFloorsMenu from "./VirtourFloorsMenu.astro";
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("rotate-overlay");
-    let overlayTimeout: number;
+    const iframe = document.querySelector(".virtour-container iframe") as HTMLIFrameElement | null;;
+    let overlayTimeout: string | number | NodeJS.Timeout | undefined; 
 
+    // Mostrar overlay (rotación)
     const showOverlay = () => {
-      if (overlay) {
-        overlay.classList.remove("hidden");
-      }
+      if (overlay) overlay.classList.remove("hidden");
       clearTimeout(overlayTimeout);
       overlayTimeout = window.setTimeout(() => {
-        if (overlay) {
-          overlay.classList.add("hidden");
-        }
-      }, 3000); // Hide after 3 seconds
+        if (overlay) overlay.classList.add("hidden");
+      }, 3000);
     };
 
     const handleResize = () => {
-      if (window.innerWidth < window.innerHeight) {
-        // Show overlay in vertical mode
-        showOverlay();
-      }
+      if (window.innerWidth < window.innerHeight) showOverlay();
     };
 
-    // Initial check for orientation
     handleResize();
-
-    // Listen for orientation changes
     window.addEventListener("resize", handleResize);
+
+    // Escuchar clicks en los enlaces del menú
+    document.querySelectorAll(".virtour-floors-menu a").forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault(); // evitar que el hash cambie en la página principal
+        const targetHash = link.getAttribute("href");
+
+        if (iframe && iframe.contentWindow && targetHash) {
+          // Cambia el hash dentro del iframe
+          iframe.contentWindow.location.hash = targetHash;
+        }
+      });
+    });
   });
 </script>
