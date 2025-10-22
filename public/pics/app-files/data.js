@@ -336,7 +336,7 @@ var APP_DATA = {
           "yaw": -1.9358973254110126,
           "pitch": 0.01028317310038851,
           "title": "Residencias",
-          "text": "<br>"
+          "text": "estos edificios se encuentran destinados para los estudiantes que vienen de otras ciudades o para diferentes propositos academicos"
         }
       ]
     },
@@ -905,14 +905,14 @@ var APP_DATA = {
         {
           "yaw": -2.498477174565126,
           "pitch": -0.05206164411491265,
-          "title": "Salon***",
-          "text": "sasa"
+          "title": "Salones practicos",
+          "text": "<br>"
         },
         {
           "yaw": -1.8823182715349187,
           "pitch": -0.0885116440007021,
-          "title": "Salon**",
-          "text": "Text"
+          "title": "Salones practicos",
+          "text": "<br>"
         }
       ]
     },
@@ -962,13 +962,13 @@ var APP_DATA = {
         {
           "yaw": -0.8829437937923252,
           "pitch": -0.07572077703370894,
-          "title": "Salon***",
+          "title": "Salones practicos",
           "text": "<br>"
         },
         {
           "yaw": 0.648039183749102,
           "pitch": -0.10548340024301162,
-          "title": "Salon***",
+          "title": "Salones practicos",
           "text": "<br>"
         }
       ]
@@ -1100,8 +1100,8 @@ var APP_DATA = {
         {
           "yaw": -0.058159350311525415,
           "pitch": -0.19052086824049397,
-          "title": "Maniquis terrorificos&nbsp;",
-          "text": "Text"
+          "title": "Maniquis de practicas",
+          "text": "Aquí se encuentran los maniquis para las prácticas médicas de los estudiantes de la UCC"
         }
       ]
     },
@@ -1448,12 +1448,12 @@ var APP_DATA = {
           "title": "Sala Auxiliar",
           "text": "Sala de profesores auxiliar"
         },
-        {
+        /*{
           "yaw": -1.4550363104845676,
           "pitch": 0.009430202248164932,
           "title": "Comedor",
           "text": "Espacio para la alimentación del personal."
-        }
+        } */
       ]
     },
     {
@@ -1560,7 +1560,7 @@ var APP_DATA = {
           "yaw": -0.4710357751061629,
           "pitch": -0.009872989331107362,
           "title": "Oficinas de decanaturas",
-          "text": "<br>"
+          "text": "Aquí se encuentran las oficinas de las decanaturas de las diferentes carreras"
         }
       ]
     },
@@ -1625,7 +1625,7 @@ var APP_DATA = {
         {
           "yaw": 0.06835513065736798,
           "pitch": -0.05943975381829247,
-          "title": "Secretarias de Psicologia",
+          "title": "Secretaria de Psicologia",
           "text": "<br>"
         }
       ]
@@ -3542,7 +3542,7 @@ var APP_DATA = {
           "yaw": 0.6037773381867932,
           "pitch": -0.14264768800737926,
           "title": "Estudio de Televisión y Fotografía",
-          "text": "Espacio equipado para producción audiovisual."
+          "text": "Espacio equipado para producciones audiovisuales."
         }
       ]
     },
