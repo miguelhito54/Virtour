@@ -35,4 +35,4 @@ link
 
 - **Correo:** sebastian.marin@campusucc.edu.co
 - **GitHub:** [github.com/sebastianmarin](https://github.com/sebastian-01)  
-- **LinkedIn:** [linkedin.com/in/sebastianmarin](www.linkedin.com/in/sebastian-marin-42808318b
+- **LinkedIn:** [linkedin.com/in/sebastianmarin](www.linkedin.com/in/sebastian-marin-42808318b)
